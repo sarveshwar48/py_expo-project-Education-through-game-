@@ -1,178 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>GameEdu Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #f4f6fb;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LearnPlay | Education Through Games</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-        /* Header */
-        header {
-            background: linear-gradient(90deg, #141e30, #243b55);
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    body {
+      background: linear-gradient(180deg, #f0f4ff, #ffffff);
+      color: #222;
+    }
 
-        header h1 {
-            margin: 0;
-        }
+    /* ===== HEADER ===== */
+    header {
+      background: linear-gradient(90deg, #6a5af9, #4a6cf7);
+      padding: 18px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-        }
+    header h1 {
+      font-size: 30px;
+    }
 
-        nav a:hover {
-            text-decoration: underline;
-        }
+    nav a {
+      margin-left: 22px;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
+    }
 
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, #2a5298, #6dd5ed);
-            color: white;
-        }
+    nav a:hover {
+      opacity: 0.8;
+    }
 
-        .hero h2 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
+    nav .btn {
+      background: white;
+      color: #4a6cf7;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
 
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
+    /* ===== HERO ===== */
+    .hero {
+      padding: 90px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 40px;
+    }
 
-        .hero button {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            background: #ff9800;
-            color: white;
-            cursor: pointer;
-        }
+    .hero h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #2b2b5f;
+    }
 
-        .hero button:hover {
-            background: #e68900;
-        }
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      line-height: 1.7;
+    }
 
-        /* Sections */
-        .section {
-            padding: 40px 20px;
-            text-align: center;
-        }
+    .hero button {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-right: 15px;
+      transition: 0.3s;
+    }
 
-        .section h3 {
-            margin-bottom: 25px;
-            font-size: 26px;
-            color: #243b55;
-        }
+    .play-btn {
+      background: #4a6cf7;
+      color: white;
+    }
 
-        .cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
+    .play-btn:hover {
+      transform: scale(1.05);
+    }
 
-        .card {
-            background: white;
-            width: 250px;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+    .login-btn {
+      background: transparent;
+      border: 2px solid #4a6cf7;
+      color: #4a6cf7;
+    }
 
-        .card h4 {
-            margin-bottom: 10px;
-            color: #2a5298;
-        }
+    /* ===== SECTION ===== */
+    section {
+      padding: 80px 60px;
+    }
 
-        .card p {
-            font-size: 14px;
-            color: gray;
-        }
+    section h3 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 50px;
+      color: #2b2b5f;
+    }
 
-        /* Footer */
-        footer {
-            background: #141e30;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 40px;
-        }
-    </style>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 18px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card h4 {
+      margin: 15px 0 12px;
+      font-size: 20px;
+    }
+
+    .card p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .card button {
+      margin-top: 18px;
+      padding: 10px 20px;
+      background: #4a6cf7;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    /* ===== LOGIN ===== */
+    .login-section {
+      background: linear-gradient(135deg, #eef2ff, #ffffff);
+    }
+
+    .login-box {
+      max-width: 420px;
+      margin: auto;
+      background: white;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    .login-box h3 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 18px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 14px;
+      background: #4a6cf7;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .login-box p {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #1f2937;
+      color: white;
+      padding: 35px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-    <h1>🎮 GameEdu</h1>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Games</a>
-        <a href="#">Lessons</a>
-        <a href="#">Profile</a>
-        <a href="login.html">Logout</a>
-    </nav>
+  <h1>🎮 LearnPlay</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Games</a>
+    <a href="#">Subjects</a>
+    <a href="#">Parents</a>
+    <a href="#">Teachers</a>
+    <a href="#" class="btn">Login</a>
+  </nav>
 </header>
 
-<section class="hero">
-    <h2>Welcome to GameEdu World!</h2>
-    <p>Play games. Learn skills. Level up your knowledge.</p>
-    <button>Start Learning</button>
+<div class="hero">
+  <div>
+    <h2>Learning Becomes an Adventure</h2>
+    <p>
+      LearnPlay combines education and gaming to help students learn faster,
+      stay motivated, and enjoy every lesson through fun challenges.
+    </p>
+    <button class="play-btn">Download game</button>
+    <button class="login-btn">Login</button>
+  </div>
+  
+</div>
+
+<section>
+  <h3>🎯 Learning Games Library</h3>
+  <div class="grid">
+    <div class="card"><h4>🧮 Math Quest</h4><p>Solve puzzles, earn coins, and master math skills.</p><button>Play</button></div>
+    <div class="card"><h4>📖 Word Wizard</h4><p>Spelling, grammar, and vocabulary adventures.</p><button>Play</button></div>
+    <div class="card"><h4>🔬 Science Lab</h4><p>Interactive experiments and science challenges.</p><button>Play</button></div>
+    <div class="card"><h4>🌍 Geo Explorer</h4><p>Learn countries, capitals, and landmarks.</p><button onclick="location.href='geo.html'">Play</button></div>
+    <div class="card"><h4>💻 Code Runner</h4><p>Basic coding logic and problem solving.</p><button>Play</button></div>
+    <div class="card"><h4>🧠 Brain Boost</h4><p>Memory, logic, and IQ-based mini games.</p><button>Play</button></div>
+    <div class="card"><h4>📜 History Heroes</h4><p>Learn history through story-based missions.</p><button>Play</button></div>
+    <div class="card"><h4>🎨 Art Studio</h4><p>Creativity, colors, and drawing activities.</p><button>Play</button></div>
+  </div>
 </section>
 
-<section class="section">
-    <h3>🎯 Learning Games</h3>
-    <div class="cards">
-        <div class="card">
-            <h4>Math Quest</h4>
-            <p>Solve puzzles and defeat enemies using math skills.</p>
-        </div>
-        <div class="card">
-            <h4>Word Master</h4>
-            <p>Improve vocabulary through fun word challenges.</p>
-        </div>
-        <div class="card">
-            <h4>Science Lab</h4>
-            <p>Experiment and explore science concepts in game form.</p>
-        </div>
-    </div>
-</section>
 
-<section class="section">
-    <h3>📚 Educational Courses</h3>
-    <div class="cards">
-        <div class="card">
-            <h4>Programming Basics</h4>
-            <p>Learn coding through interactive missions.</p>
-        </div>
-        <div class="card">
-            <h4>General Knowledge</h4>
-            <p>Boost your IQ with quizzes and challenges.</p>
-        </div>
-        <div class="card">
-            <h4>Language Skills</h4>
-            <p>Practice grammar and communication skills.</p>
-        </div>
-    </div>
-</section>
 
 <footer>
-    © 2026 GameEdu Platform | Learn & Play
+  <p>© 2026 LearnPlay | Education Through Games | School Project Ready</p>
 </footer>
+
+
+<!-- INTERACTIVE GAMES -->
+<section>
+  <h3>🎮 Interactive Mini Games</h3>
+  <div class="grid">
+
+    <!-- Math Game -->
+    <div class="card">
+      <h4>➕ Quick Math</h4>
+      <p id="math-question">2 + 3 = ?</p>
+      <input type="number" id="math-answer" style="margin-top:10px;padding:8px;width:80%" />
+      <button onclick="checkMath()">Check</button>
+      <p id="math-result"></p>
+    </div>
+
+    <!-- Word Game -->
+    <div class="card">
+      <h4>🔤 Word Scramble</h4>
+      <p>Unscramble: <b>LEAPRN</b></p>
+      <input type="text" id="word-answer" style="margin-top:10px;padding:8px;width:80%" />
+      <button onclick="checkWord()">Check</button>
+      <p id="word-result"></p>
+    </div>
+
+    <!-- Quiz Game -->
+    <div class="card">
+      <h4>🌍 Geography Quiz</h4>
+      <p>Capital of France?</p>
+      <button onclick="quizAnswer('wrong')">Berlin</button>
+      <button onclick="quizAnswer('correct')">Paris</button>
+      <button onclick="quizAnswer('wrong')">Rome</button>
+      <p id="quiz-result"></p>
+    </div>
+
+    <!-- Memory Game -->
+    <div class="card">
+      <h4>🧠 Memory Click</h4>
+      <p>Click the button 5 times!</p>
+      <button onclick="memoryGame()">Click Me</button>
+      <p id="memory-count">0</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function checkMath() {
+    const answer = document.getElementById('math-answer').value;
+    document.getElementById('math-result').innerText =
+      answer == 5 ? '✅ Correct!' : '❌ Try again';
+  }
+
+  function checkWord() {
+    const word = document.getElementById('word-answer').value.toLowerCase();
+    document.getElementById('word-result').innerText =
+      word === 'learnp' || word === 'learn' ? '✅ Correct!' : '❌ Hint: It relates to education';
+  }
+
+  function quizAnswer(result) {
+    document.getElementById('quiz-result').innerText =
+      result === 'correct' ? '🎉 Correct Answer!' : '❌ Wrong Answer';
+  }
+
+  let clicks = 0;
+  function memoryGame() {
+    clicks++;
+    document.getElementById('memory-count').innerText = clicks;
+    if (clicks === 5) {
+      alert('🎉 Great memory! You did it!');
+      clicks = 0;
+      document.getElementById('memory-count').innerText = 0;
+    }
+  }
+</script>
 
 </body>
 </html>

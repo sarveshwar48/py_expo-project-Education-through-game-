@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Geography Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #e0f2ff, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .game-box {
+      background: white;
+      padding: 30px;
+      width: 350px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      color: #2b2b5f;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 10px;
+      background: #4a6cf7;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #3548c8;
+    }
+
+    .score {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .result {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="game-box">
+  <h2>🌍 Geography Quiz</h2>
+  <p id="question">Question here</p>
+
+  <button onclick="checkAnswer(0)" id="opt0"></button>
+  <button onclick="checkAnswer(1)" id="opt1"></button>
+  <button onclick="checkAnswer(2)" id="opt2"></button>
+  <button onclick="checkAnswer(3)" id="opt3"></button>
+
+  <p class="result" id="result"></p>
+  <p class="score">Score: <span id="score">0</span></p>
+
+  <button onclick="nextQuestion()">Next Question</button>
+</div>
+
+<script>
+  const questions = [
+    {
+      q: "What is the capital of France?",
+      options: ["Berlin", "Madrid", "Paris", "Rome"],
+      answer: 2
+    },
+    {
+      q: "Which is the largest continent?",
+      options: ["Africa", "Asia", "Europe", "Australia"],
+      answer: 1
+    },
+    {
+      q: "Which country has the most population?",
+      options: ["USA", "India", "China", "Russia"],
+      answer: 2
+    },
+    {
+      q: "Which ocean is the largest?",
+      options: ["Atlantic", "Indian", "Pacific", "Arctic"],
+      answer: 2
+    },
+    {
+      q: "Mount Everest is located in which country?",
+      options: ["India", "China", "Nepal", "Bhutan"],
+      answer: 2
+    }
+  ];
+
+  let current = 0;
+  let score = 0;
+
+  function loadQuestion() {
+    document.getElementById("question").innerText = questions[current].q;
+    for (let i = 0; i < 4; i++) {
+      document.getElementById("opt" + i).innerText = questions[current].options[i];
+    }
+    document.getElementById("result").innerText = "";
+  }
+
+  function checkAnswer(choice) {
+    if (choice === questions[current].answer) {
+      document.getElementById("result").innerText = "✅ Correct!";
+      score++;
+      document.getElementById("score").innerText = score;
+    } else {
+      document.getElementById("result").innerText = "❌ Wrong Answer";
+    }
+  }
+
+  function nextQuestion() {
+    current++;
+    if (current >= questions.length) {
+      alert("🎉 Game Over! Your Score: " + score);
+      current = 0;
+      score = 0;
+      document.getElementById("score").innerText = score;
+    }
+    loadQuestion();
+  }
+
+  loadQuestion();
+</script>
+
+</body>
+</html>
