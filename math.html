@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Math Challenge</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .game {
+      background: #020617;
+      padding: 30px;
+      width: 380px;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .question {
+      font-size: 22px;
+      margin: 20px 0;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #3b82f6;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2563eb;
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .result {
+      margin-top: 15px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="game">
+  <h2>🧠 Math Challenge</h2>
+  <p>Solve before time runs out</p>
+
+  <div class="question" id="question"></div>
+
+  <input type="number" id="answer" placeholder="Enter answer" />
+
+  <button onclick="submitAnswer()">Submit</button>
+
+  <div class="result" id="result"></div>
+
+  <div class="info">
+    <span>Score: <b id="score">0</b></span>
+    <span>Time: <b id="time">10</b>s</span>
+  </div>
+</div>
+
+<script>
+  let score = 0;
+  let correctAnswer = 0;
+  let timeLeft = 10;
+  let timer;
+
+  function generateQuestion() {
+    clearInterval(timer);
+    timeLeft = 10;
+    document.getElementById("time").innerText = timeLeft;
+
+    const a = Math.floor(Math.random() * 50) + 10;
+    const b = Math.floor(Math.random() * 30) + 5;
+    const type = Math.floor(Math.random() * 4);
+
+    let questionText = "";
+
+    switch (type) {
+      case 0:
+        correctAnswer = a + b;
+        questionText = `${a} + ${b}`;
+        break;
+      case 1:
+        correctAnswer = a - b;
+        questionText = `${a} − ${b}`;
+        break;
+      case 2:
+        correctAnswer = a * b;
+        questionText = `${a} × ${b}`;
+        break;
+      case 3:
+        correctAnswer = Math.floor((a / b) * 10) / 10;
+        questionText = `${a} ÷ ${b} (1 decimal)`;
+        break;
+    }
+
+    document.getElementById("question").innerText = questionText;
+    document.getElementById("answer").value = "";
+    document.getElementById("result").innerText = "";
+
+    timer = setInterval(() => {
+      timeLeft--;
+      document.getElementById("time").innerText = timeLeft;
+      if (timeLeft === 0) {
+        document.getElementById("result").innerText = "⏱ Time's up!";
+        generateQuestion();
+      }
+    }, 1000);
+  }
+
+  function submitAnswer() {
+    const userAnswer = parseFloat(document.getElementById("answer").value);
+    if (userAnswer === correctAnswer) {
+      score++;
+      document.getElementById("score").innerText = score;
+      document.getElementById("result").innerText = "✅ Correct!";
+    } else {
+      document.getElementById("result").innerText =
+        `❌ Wrong! Answer: ${correctAnswer}`;
+    }
+    generateQuestion();
+  }
+
+  generateQuestion();
+</script>
+
+</body>
+</html>
