@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/jpeg" href="EDG.jpeg" width="70">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameEdu Login</title>
+
     <style>
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+
+            /* GRAY BACKGROUND */
+            background-color: gray;
+
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -87,16 +90,17 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="login-box">
         <h2>GameEdu Portal</h2>
         <p>Learn. Play. Grow.</p>
 
-        <form action="backcode.html">
+        <form>
             <div class="input-box">
-                <label>Username</label>
-                <input type="text" placeholder="Enter your username" required>
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email" required>
             </div>
 
             <div class="input-box">
