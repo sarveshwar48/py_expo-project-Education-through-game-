@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Word Master Challenge</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f172a, #020617);
+      color: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .game {
+      background: #020617;
+      width: 420px;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 5px;
+    }
+
+    .mode {
+      font-size: 14px;
+      color: #94a3b8;
+      margin-bottom: 15px;
+    }
+
+    .question {
+      font-size: 18px;
+      margin: 20px 0;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #3b82f6;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2563eb;
+    }
+
+    .result {
+      margin-top: 12px;
+      font-size: 16px;
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="game">
+  <h2>🧠 Word Master</h2>
+  <div class="mode" id="mode">Vocabulary</div>
+
+  <div class="question" id="question"></div>
+
+  <input type="text" id="answer" placeholder="Type your answer" />
+
+  <button onclick="submitAnswer()">Submit</button>
+
+  <div class="result" id="result"></div>
+
+  <div class="info">
+    <span>Score: <b id="score">0</b></span>
+    <span>Round: <b id="round">1</b></span>
+  </div>
+</div>
+
+<script>
+  const questions = [
+    {
+      type: "Vocabulary",
+      q: "What does the word 'Ubiquitous' mean?",
+      a: "present everywhere"
+    },
+    {
+      type: "Grammar",
+      q: "Correct the sentence: 'She don't like coffee.'",
+      a: "she doesn't like coffee"
+    },
+    {
+      type: "Spelling",
+      q: "Spell correctly: Accomodate / Accommodate",
+      a: "accommodate"
+    },
+    {
+      type: "Vocabulary",
+      q: "What does 'Ambiguous' mean?",
+      a: "unclear"
+    },
+    {
+      type: "Grammar",
+      q: "Correct: 'Neither of the answers are correct.'",
+      a: "neither of the answers is correct"
+    },
+    {
+      type: "Spelling",
+      q: "Spell correctly: Definately / Definitely",
+      a: "definitely"
+    }
+  ];
+
+  let index = 0;
+  let score = 0;
+
+  function loadQuestion() {
+    document.getElementById("mode").innerText = questions[index].type;
+    document.getElementById("question").innerText = questions[index].q;
+    document.getElementById("answer").value = "";
+    document.getElementById("result").innerText = "";
+    document.getElementById("round").innerText = index + 1;
+  }
+
+  function submitAnswer() {
+    const userAnswer = document
+      .getElementById("answer")
+      .value.trim()
+      .toLowerCase();
+
+    const correctAnswer = questions[index].a.toLowerCase();
+
+    if (userAnswer === correctAnswer) {
+      score++;
+      document.getElementById("score").innerText = score;
+      document.getElementById("result").innerText = "✅ Correct!";
+    } else {
+      document.getElementById("result").innerText =
+        "❌ Incorrect. Correct answer: " + questions[index].a;
+    }
+
+    index++;
+    if (index >= questions.length) {
+      alert("🎉 Game Complete! Your Score: " + score);
+      index = 0;
+      score = 0;
+      document.getElementById("score").innerText = score;
+    }
+    loadQuestion();
+  }
+
+  loadQuestion();
+</script>
+
+</body>
+</html>
