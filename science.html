@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Science Challenge</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #020617, #0f172a);
+      color: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .game-box {
+      background: #020617;
+      width: 400px;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .question {
+      font-size: 20px;
+      margin: 20px 0;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 12px;
+      background: #22c55e;
+      color: #022c22;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #16a34a;
+    }
+
+    .result {
+      margin-top: 15px;
+      font-size: 16px;
+    }
+
+    .info {
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="game-box">
+  <h2>🔬 Science Challenge</h2>
+  <p>Test your scientific knowledge</p>
+
+  <div class="question" id="question"></div>
+
+  <button onclick="checkAnswer(0)" id="opt0"></button>
+  <button onclick="checkAnswer(1)" id="opt1"></button>
+  <button onclick="checkAnswer(2)" id="opt2"></button>
+  <button onclick="checkAnswer(3)" id="opt3"></button>
+
+  <div class="result" id="result"></div>
+
+  <div class="info">
+    <span>Score: <b id="score">0</b></span>
+    <span>Question: <b id="count">1</b></span>
+  </div>
+
+  <button onclick="nextQuestion()">Next</button>
+</div>
+
+<script>
+  const questions = [
+    {
+      q: "What particle has a negative charge?",
+      options: ["Proton", "Neutron", "Electron", "Photon"],
+      answer: 2
+    },
+    {
+      q: "What gas is most abundant in Earth's atmosphere?",
+      options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
+      answer: 2
+    },
+    {
+      q: "DNA is primarily responsible for what?",
+      options: ["Energy production", "Cell movement", "Genetic information", "Protein digestion"],
+      answer: 2
+    },
+    {
+      q: "What planet has the strongest gravity?",
+      options: ["Earth", "Mars", "Jupiter", "Saturn"],
+      answer: 2
+    },
+    {
+      q: "What is the pH of pure water?",
+      options: ["5", "6", "7", "8"],
+      answer: 2
+    },
+    {
+      q: "Which law explains action and reaction?",
+      options: ["Newton’s First Law", "Newton’s Second Law", "Newton’s Third Law", "Law of Gravity"],
+      answer: 2
+    }
+  ];
+
+  let index = 0;
+  let score = 0;
+
+  function loadQuestion() {
+    document.getElementById("question").innerText = questions[index].q;
+    questions[index].options.forEach((opt, i) => {
+      document.getElementById("opt" + i).innerText = opt;
+    });
+    document.getElementById("result").innerText = "";
+    document.getElementById("count").innerText = index + 1;
+  }
+
+  function checkAnswer(choice) {
+    if (choice === questions[index].answer) {
+      score++;
+      document.getElementById("score").innerText = score;
+      document.getElementById("result").innerText = "✅ Correct!";
+    } else {
+      document.getElementById("result").innerText =
+        "❌ Incorrect. Correct answer: " +
+        questions[index].options[questions[index].answer];
+    }
+  }
+
+  function nextQuestion() {
+    index++;
+    if (index >= questions.length) {
+      alert("🎉 Quiz Complete! Your Score: " + score);
+      index = 0;
+      score = 0;
+      document.getElementById("score").innerText = score;
+    }
+    loadQuestion();
+  }
+
+  loadQuestion();
+</script>
+
+</body>
+</html>

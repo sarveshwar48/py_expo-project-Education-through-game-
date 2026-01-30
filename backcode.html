@@ -12,10 +12,16 @@
       font-family: 'Poppins', sans-serif;
     }
 
-    body {
-      background: linear-gradient(180deg, #f0f4ff, #ffffff);
-      color: #222;
-    }
+      body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+
+            background-image: url("hex.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
 
     /* ===== HEADER ===== */
     header {
@@ -226,7 +232,7 @@
 <div class="hero">
   <div>
     <h2>Learning Becomes an Adventure</h2>
-    <p>
+    <p style="color: #4a6cf7;">
       LearnPlay combines education and gaming to help students learn faster,
       stay motivated, and enjoy every lesson through fun challenges.
     </p>
@@ -239,9 +245,9 @@
 <section>
   <h3>🎯 Learning Games Library</h3>
   <div class="grid">
-    <div class="card"><h4>🧮 Math Quest</h4><p>Solve puzzles, earn coins, and master math skills.</p><button>Play</button></div>
+    <div class="card"><h4>🧮 Math Quest</h4><p>Solve puzzles, earn coins, and master math skills.</p><button onclick="location.href='math.html'">Play</button></div>
     <div class="card"><h4>📖 Word Wizard</h4><p>Spelling, grammar, and vocabulary adventures.</p><button>Play</button></div>
-    <div class="card"><h4>🔬 Science Lab</h4><p>Interactive experiments and science challenges.</p><button>Play</button></div>
+    <div class="card"><h4>🔬 Science Lab</h4><p>Interactive experiments and science challenges.</p><button onclick="location.href='science.html'">Play</button></div>
     <div class="card"><h4>🌍 Geo Explorer</h4><p>Learn countries, capitals, and landmarks.</p><button onclick="location.href='geo.html'">Play</button></div>
     <div class="card"><h4>💻 Code Runner</h4><p>Basic coding logic and problem solving.</p><button>Play</button></div>
     <div class="card"><h4>🧠 Brain Boost</h4><p>Memory, logic, and IQ-based mini games.</p><button>Play</button></div>
